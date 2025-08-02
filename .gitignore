@@ -1,10 +1,10 @@
-/TVAF/Investments/output/*.aux
-/TVAF/Investments/output/*.fdb_latexmk
-/TVAF/Investments/output/*.fls
-/TVAF/Investments/output/*.log
-/TVAF/Investments/output/*.gz
-/Trabajo Practico/TP3/output/*.aux
-/Trabajo Practico/TP3/output/*.fdb_latexmk
-/Trabajo Practico/TP3/output/*.fls
-/Trabajo Practico/TP3/output/*.log
-/Trabajo Practico/TP3/output/*.gz
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.gz
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.gz
