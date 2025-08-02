@@ -1,0 +1,216 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{booktabs} % Para mejor calidad en las tablas
+\usepackage{amsmath}  % Para soporte matemático si se necesita
+\usepackage{multirow} % Para usar \multirow en tablas
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pgfplots}
+
+\setlength{\parindent}{0pt}
+
+\title{
+    \textbf{Teoria de Valuacion de Activos Financieros} \\ 
+    Resumen y notas de la clase
+    \\
+    \small Bibliografia: Investments - Bodie 13th edition
+}
+\author{Ezequiel Telias}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+
+\section{Risk, Return, and the Historical Record - Capitulo 5}
+Se expresa el Effective Annual Rate  (EAR), una tasa que tiene en cuenta la capitalizacion de los intereses (o el interes compuesto)
+ usando la formula de retornos lineales, siendo P(T) el precio pagado con un maturity date T.
+\[
+r(T) = \frac{P(T)}{100} - 1
+\]
+
+EAR explicitamente se usa para intereses compuestos. En contraste, se introduce el Annual Percentage Rate (APR)
+, ignorando este interes compuesto. 
+\[
+1 + EAR = \left(1 + \frac{APR}{n}\right)^{n}
+\]
+\[
+APR = n \times \left[(1 + EAR)^{\frac{1}{n}} - 1\right]
+\]
+\\
+\textbf{Continuous Compunding o Compuesto continuo}
+A medida que los intereses aumentan, la pregunta es como van a diverger estos rates. La formula EAR se acerca a un 
+compuesto continuo.
+\[
+\ln(1 + EAR) = r_{cc}
+\]
+
+\subsection{Risk and Risk Premium - Riesgo y prima de riesgo}
+Holding period return o HPR, se define como: 
+\[
+HPR = \frac{\text{Ending Price} - \text{Beginning Price} + \text{Cash Dividend}}{\text{Beginning Price}}
+\]
+
+El retorno porcentual de los dividendos se llama \textbf{dividend yield}.
+\\
+
+\textbf{Expected Return and Standard Deviation}
+Para calcular la distribucion probabilistica, primero calculamos la media de retorno E(r).
+\[
+E(r) = \sum_{s} p(s) r(s)
+\]
+
+La varianza entonces, es:
+\[
+\mathrm{Var}(r) = \sigma^{2} = \sum_{s} p(s) \left[r(s) - E(r)\right]^{2}
+\]
+
+
+Es importante destacar que el desvio estandar no distingue entre buenas o malas sorpresas. Trata a todas las desviaciones
+desde la media. Igualmente cuanto mas simetrica es a la media, el desvio, es mas razonable medir el riesgo.
+\\
+
+\textbf{Excess Returns and Risk Premiums - Retorno residual y prima de riesgo}
+\\
+Se mide la recompensa como la diferencia entre el ESPERADO HPR y la tasa libre de riesgo, que es la tasa presente en
+assets como fondos de money market o bonos. Esta diferencia es la prima de riesgo, por ejemplo, la tasa libre de riesgo
+ es de 4\% y el retorno esperado de otro asset es de 9\%, entonces, la prima de riesgo es de 5\%.  El retorno residual, entonces, es el retorno
+ real recibido (Concepto ex post). 
+\\
+
+\textbf{The Reward-to-Volatility (Sharpe) Ratio}
+\\
+Se presume que un inversor esta mas interesado en los retornos residuales esperados que pueden ganar pasando de un bono a un portfolio mas 
+arriesgado.
+\[
+\text{Sharpe Ratio} = \frac{\text{Risk Premium}}{\sigma_{\text{Excess Return}}}
+\]
+\[
+S = \frac{E(r) - r_f}{\sigma(r - r_f)}
+\]
+\\
+
+\subsection{Deviations from Normality and Tail Risk}
+La normalidad de los retornos residuales simplifica en exceso la seleccion de Porftolios. Que pasa si los grandes retornos negativos son mas 
+probables que los grandes positivos? La medida estandar de esta asimetria es llamada Skew. Asi como la varianza, es el valor cuadrado
+del promedio del desvio, el skew es el cubo de la desviacion promedio. Una desviacion negativa sigue asi una ves hecho el calculo. Entonces,
+podemos ver extemos malos resultados.
+
+\[
+\text{Skew} = \frac{\text{Average}\left[(R - \bar{R})^{3}\right]}{\sigma^{3}}
+\]
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    domain=-4:8,
+    samples=200,
+    axis lines=middle,
+    xlabel={$x$}, ylabel={$f(x)$},
+    legend style={at={(0.5,-0.15)},anchor=north},
+    width=12cm,
+    height=7cm
+]
+% Distribución simétrica (Normal)
+\addplot[blue, thick] {exp(-x^2/2)/sqrt(2*pi)};
+\addlegendentry{Simétrica (skew = 0)}
+
+% Sesgo positivo
+\addplot[green, dashed] {0.4*exp(-((x-1)^2)/3)};
+\addlegendentry{Skew positivo}
+
+% Sesgo negativo
+\addplot[red!70!black, dotted] {0.5*exp(-((x+1)^2)/1.5)};
+\addlegendentry{Skew negativo}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\newpage
+
+Otra importante separacion de la normalidad es la \textbf{Kurtosis}, que tiene en cuenta la probabilidad de los valores extremos en cualquiera de los lados.
+ Alta Kurtosis, significa que hay mas probabilidad en las colas de la distribucion que la que se predice en la distribucion normal.
+\\
+
+\[
+\text{Kurtosis} = \frac{\text{Average}\left[(R - \bar{R})^{4}\right]}{\sigma^{4}} - 3
+\]
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    domain=-5:5,
+    samples=200,
+    axis lines=middle,
+    xlabel={$x$}, ylabel={$f(x)$},
+    legend style={at={(0.5,-0.15)},anchor=north},
+    width=12cm,
+    height=7cm
+]
+% Distribución normal (kurtosis = 3)
+\addplot[blue, thick] {exp(-x^2/2)/sqrt(2*pi)};
+\addlegendentry{Normal (kurtosis = 3)}
+
+% Alta kurtosis (leptocúrtica)
+\addplot[red, dashed] {1.4*exp(-x^2/1.2)/sqrt(1.2*2*pi)};
+\addlegendentry{Alta kurtosis}
+
+% Baja kurtosis (platicúrtica)
+\addplot[green!70!black, dotted] {0.7*exp(-x^2/3)/sqrt(3*2*pi)};
+\addlegendentry{Baja kurtosis}
+\legend{El grafico no esta bien}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\textbf{Value at Risk}
+El VaR es una medida para calcular las perdidas extremas en casos dentro del 1 a 5 porciento de la distribucion normal. Este valor
+ puede ser de gran utilidad cuando los retornos no son una distribucion normal.
+
+\textbf{Conclusiones}
+Long term: A largo plazo, los retornos se asemejan mas a lo que es una distribucion lognormal, que significa que el logaritmos
+de el valor final del portfolio es normalmente distribuida. Entonces, se sigue el enfoque de usar los retornos compuestos continuos.
+
+Formulas:
+
+\[
+\bar{r}_{\text{arit}} = \frac{r_1 + r_2 + \cdots + r_n}{n}
+\]
+
+\[
+\bar{r}_{\text{geom}} = \left[(1 + r_1)(1 + r_2) \cdots (1 + r_n)\right]^{\frac{1}{n}} - 1
+\]
+
+\[
+r_{cc} = \ln(1 + \text{Effective Annual Rate})
+\]
+
+\[
+E(r) = \sum_{i} p_i r_i
+\]
+
+\[
+\mathrm{Var}(r) = \sum_{i} p_i \left(r_i - E(r)\right)^2
+\]
+
+\[
+\sigma = \sqrt{\mathrm{Var}(r)}
+\]
+
+\[
+S = \frac{E(r_P) - r_f}{\sigma_P}
+\]
+
+\[
+r_{\text{real}} = \frac{1 + r_{\text{nominal}}}{1 + \text{inflation}} - 1
+\]
+
+\[
+r_{\text{real (cc)}} = r_{\text{nominal}} - \text{inflation}
+\]
+
+\end{document}

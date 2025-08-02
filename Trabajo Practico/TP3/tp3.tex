@@ -1,0 +1,454 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{booktabs} % Para mejor calidad en las tablas
+\usepackage{amsmath}  % Para soporte matemático si se necesita
+\usepackage{multirow} % Para usar \multirow en tablas
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\setlength{\parindent}{0pt}
+
+\title{
+    \textbf{Teoria de Valuacion de Activos Financieros} 
+}
+\author{Ezequiel Telias}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Ejercicio 1}
+Se supone que un activo es sensible a los movimientos de uno o más factores de mercado M. También, se asume que los eventos inesperados, específicos de la empresa, están incorrelacionados.
+ La única fuente de covarianza entre cualquier par de securities es su dependencia común al retorno de mercado.
+
+
+\section{Ejercicio 2}
+ Teniendo en cuenta, $\beta_1$ = 0.85, $\beta_2$ = 1.30m $\sigma_f^2$ = 1.30, se utiliza la siguiente formula para calcular la covarianza:
+ \[
+\begin{aligned}
+\mathrm{Cov}(r_i, r_j) &= \mathrm{Cov}(\beta_i m + \varepsilon_i, \beta_j m + \varepsilon_j) = \beta_i \beta_j \sigma_m^2
+\end{aligned}
+\]
+\[
+\begin{aligned}
+\beta_i \beta_j \sigma_m^2 = 0,09945
+\end{aligned}
+\]
+
+\section{Ejercicio 3}
+
+Dada la siguiente informacion, se construira un porfolio con ponderaciones de $2/3$ para el activo X y $1/3$ para Y.
+\begin{table}[h!]
+\centering
+\begin{tabular}{lcc}
+\hline
+\textbf{Activo} & \textbf{Varianza Residual} & \textbf{Cov}(e\textsubscript{x}, e\textsubscript{y}) \\
+\hline
+Activo X & 0.02 & 0.01 \\
+Activo Y & 0.06 & -- \\
+\hline
+\end{tabular}
+\end{table}
+
+Asumiendo los supuestos de LFM donde la covarianza de los activos tiene que ser igual a 0, se utilizara la siguiente formula:
+\[
+\sigma^2(\varepsilon_p) = \sum_{j=1}^{N} w_j^2 \, \sigma^2(\varepsilon_j) 
+\]
+\[
+\sigma^2(\varepsilon_p) = (\frac{3}{2})^2 * 0.02 + (\frac{1}{2})^2 * 0.06 = 1,56E-02
+\]
+
+Para el siguiente punto se toma la covarianza como 0.01, Multiplicando la matriz de covarianza con las ponderaciones, teniendo como resultado 2,00E-02
+. 
+
+\[
+\begin{pmatrix}
+0.02 & 0.01 \\
+0.01 & 0.06
+\end{pmatrix}
+\]
+
+\section{Ejercicio 4}
+Teniendo en cuenta la siugiente estimacion.
+\[
+r_j = 0.03 + 1.3 r_M + (\varepsilon_j) 
+\]
+
+a) Siendo $r_i$ el rendimiento esperado, si el factor de mercado cae 2\%, entonces $r_i$:
+
+\[
+r_i = 0.03\% + 1.3 * -2\% = 0,4\%
+\]
+
+b) La ecuacion estimada es una funcion lineal asi que un buen grafico para representarla puede ser uno de dispersion mostrando la regresion lineal calculada.
+\\
+
+c) Teniendo en cuenta la estimacion inicial, se da lo siguiente:
+
+\[
+0,35\% = 0.03 + 1.3 * -0.5\% + \varepsilon_j
+\]
+\[
+0,35\% = 0.03 - 0,0065 + \varepsilon_j 
+\]
+\[
+0,35\% = 0.0365 + \varepsilon_j
+\]
+\[
+ \varepsilon_j = -3\%
+\]
+
+Se nota una respuesta negativa de la empresa respecto al mercado.
+
+\section{Ejercicio 5}
+
+Para el siguiente ejercicio se toma en cuenta la siguiente informacion:
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{lccc}
+\toprule
+\textbf{Activo} & \(\beta\) & \(\sigma^2_r\) & \(\sigma^2_{\varepsilon}\) \\
+\midrule
+A & 0.5 & 0.04 & 0.0625 \\
+B & 1.5 & 0.08 & 0.2825 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+a) Para calcular la sensibilidad del portfolio utilizo la siguiente formula:
+
+\[
+\beta_p = \sum_{i=1}^{N} w_i \beta_i
+\]
+
+\[
+\beta_p = 0.5*0.5 + 0.5*1.5 = 1
+\]
+
+b) Cumpliendo los supuestos, con una covarianza de los activos igual a 0, entonces, para calcular la varianza total, comienzo con
+la varianza idiosincratica del porfolio.
+
+\[
+\sigma^2_{\varepsilon_p} = \sum_{i=1}^{N} w_i^2 \, \sigma^2_{\varepsilon_i}
+\]
+
+\[
+\sigma^2_{\varepsilon_p} = 0.5^2*0.0625 + 0.5^2*0.2825 = 0.03
+\]
+
+
+Para calcular la varianza de mercado, $\sigma_M^2$, despejo la ecuacion de $\sigma^2_{r_i}$ .
+
+
+\[
+\sigma^2_{r_B} = \beta_B^2 \sigma_M^2 + \sigma^2_{\varepsilon_B}
+\]
+
+\[
+\sigma_M^2 = \frac{\sigma^2_{r_B} - \sigma^2_{\varepsilon_B} } { \beta_B^2}
+\]
+
+\[
+\sigma_M^2 = 0.09
+\]
+
+Entonces, dada la siguiente ecuacion, podemos calcular la varianza total del portfolio:
+\[
+\sigma_p^2 = \beta_p^2 \sigma_M^2 + \sigma^2_{\varepsilon_p}
+\]
+
+\[
+\sigma_p^2 = 1 * 0,09 + 0,03 = 0,12
+\]
+
+
+\section{Ejercicio 6}
+
+Teniendo los datos de la columna de volatilidad y Correlacion con PM, se van a calcular las siguientes columnas
+ con $\sigma_M^2$ igual a 0,0016.
+\\
+
+\begin{tabular}{lcccccc}
+\hline
+\textbf{Activo} & \textbf{Volatilidad $\sigma$} & \textbf{Correlación con PM} & \(\mathbf{b}\) & \textbf{Riesgo Sistematico} & \textbf{Riesgo Id.} \\
+\hline
+Blue Axe     & 0,006 & 0,9 & 0,135 & 0,00292\%& 0,0007\% \\
+Black Rock   & 0,006 & 0,3 & 0.045 & 0,00032\% & 0,0033\%\\
+Silver Light & 0,006 & 0,0 & 0 & 0 & 0,0036\%\\
+\hline
+\end{tabular}
+\\
+
+Para calcular los betas, utilice la siguiente funcion:
+\[
+\beta_i = \rho_{i,M} \times \frac{\sigma_i}{\sigma_M}.
+\]
+
+Para calcular el riesgo sistemico:
+
+\[
+= \beta_i \sigma_M^2
+\]
+
+Para el riesgo idiosincratico:
+
+
+\[
+\sigma^2_{\varepsilon_i} = \sigma^2_i - \beta_i\sigma^2_M
+\]
+
+
+
+\section{Ejercicio 7}
+
+Para el siguiente ejercicio se toma en cuenta la siguiente informacion, una correlacion de ABC y XYZ de 0,5. La volatilidad del P es menor a 10\%:
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{lcc}
+\toprule
+\textbf{Activos} & \(\rho_{ABC,PM}\) & \(\sigma^2_r\)  \\
+\midrule
+ABC & 0.0 & 10\% \\
+XYZ & 0.5 & 20\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+a) Utilizo la siguiente formula:
+\[
+\beta_i = \rho_{i,M} \times \frac{\sigma_i}{\sigma_M}.
+\]
+
+
+Para el caso del activo ABC, al tener una correlacion nula nos da lo siguiente:
+
+\[
+\beta_{ABC} =0 * \frac{0,1}{\sigma_M} = 0.
+\]
+
+Para el caso del activo XYZ, tenemos la siguiente ecuacion con $\sigma_M$ menor a  10\%. Entonces para estimar, 
+tomamos inicialmente $\sigma_M$ como 10\%:
+
+\[
+\beta_{ABC} = 0,5 * \frac{0,2}{0,1} = 1.
+\]
+
+Como resultado, $\beta_{ABC}$ es mayor a 1.
+
+
+b) La covarianza de dos activos la podemos calcular con la siguiente formula al tener los riesgos idiosincraticos 
+incorrelacionados.
+
+
+\[
+ \mathrm{Cov}(r_{ABC}, r_{XYZ}) = \beta_{ABC} \times \beta_{XYZ} \times \sigma_M^2
+\]
+
+Con $\beta_{XYZ}$ mayor a 1, $\sigma_M^2$ mayor a 10\%, pero siendo $\beta_{ABC}$ igual a 0, como resultado obtenemos:
+
+\[
+ \mathrm{Cov}(r_{ABC}, r_{XYZ}) = 0
+\]
+
+c) Para calcular la covarianza real, vamos a tener en cuenta la formula de calculo de la correlacion.
+
+\[
+\mathrm{Cov}(r_{ABC}, r_{XYZ}) = \beta_{ABC} \times \beta_{XYZ} \times \sigma_M^2
+\]
+
+
+\[
+ \mathrm{Corr}(r_{ABC}, r_{XYZ}) = \frac{\beta_{ABC} \times \beta_{XYZ} \times \sigma_M^2}{\sigma_{ABC} \times \sigma_{XYZ}}
+\]
+\\
+Entonces, tenemos como resultado la siguiente formula:
+
+\[
+ \rho_{ABC,XYZ}= \frac{\mathrm{Cov}(r_{ABC}, r_{XYZ})}{\sigma_{ABC} \times \sigma_{XYZ}}
+\]
+
+
+\[
+\mathrm{Cov}(r_{ABC}, r_{XYZ}) = \rho_{ABC,XYZ} \cdot \sigma_{ABC} \cdot \sigma_{XYZ}
+\]
+
+\[
+\mathrm{Cov}(r_{ABC}, r_{XYZ}) = 0.5 \times 0.10 \times 0.20 = 0.010
+\]
+
+
+d) Se calcula el beta del portfolio con ponderaciones 40\% en ABC y 60\% en XYZ. Tomando en cuenta, los betas calculados en 
+el punto b y teniendo en cuenta que $\beta_{XYZ}$ es > 1. 
+
+\[
+\beta_p = \sum_{i=1}^{N} w_i \beta_i
+\]
+\[
+\beta_p = 0.4 \times 0 + 0.6 \times 1 > 0.6 
+\]
+Tenemos como resultado el beta del porfolio mayor a 0.6. 
+\\
+
+e) Para resolver el siguiente ejercicio utilizamos la formula de markowitz con una suma de la varianza multiplicada por su peso.
+\[
+\sigma_P^2 = w_{ABC}^2 \sigma_{ABC}^2 + w_{XYZ}^2 \sigma_{XYZ}^2 + 2 w_{ABC} w_{XYZ}  \mathrm{Cov}(ABC, XYZ)
+\]
+\[
+\sigma_P^2 = 0,4^2 \times 0,1^2 + 0,6^2 \times0,2^2 + 2 \times 0,4 \times 0,6  \times 0,010
+\]
+\[
+\sigma_P^2 = 0,0208
+\]
+\\
+
+f) Dada la siguiente ecuacion, tomamos la covarianza como 0 teniendo en cuenta las caracteristicas de un LFM:
+
+\[
+\sigma_P^2 = w_{ABC}^2 \sigma_{ABC}^2 + w_{XYZ}^2 \sigma_{XYZ}^2 
+\]
+\[
+\sigma_P^2 = 0,016
+\]
+
+
+\section{Ejercicio 8}
+Un LFM es un modelo que descompone los retornos en sistematicos (con unico o multiple factor) e idiosincraticos, teniendo en cuenta la sensibilidad de un activo. A diferencia de Markowitz, necesita un set mas pequeñe de muestra. Existe un problema de tomar
+al riesgo sistematico con un unico factor cuando no lo es. Existen otras fuentes de riesgo como tasas de interes, inflacion, etc. 
+Entonces, otra representacion de riesgo sistematico puede ser un buen refinamiento del modelo de unico factor y nos permite tener un mayor entendimiento de los retornos.
+
+
+\section{Ejercicio 9}
+Se tiene la siguiente funcion que estima el rendimiento con el modelo LFM de 2 factores sobre el activo H.
+Los factores son, rendimiento del portfolio de mercado y la sospresa del crecimien
+
+\[
+r_H = 0.5 + 0.8 r_M + 0.2 (g - g^e) + \varepsilon_H
+\]
+
+Con $r_M$ = 0,05 y $(g - g^e)$ = 0,02, tenemos el resultado de $r_H$ = 0,544, estimando un retorno residual de 0\%.
+\\
+
+b) Con mercado en baja de 2\% porciento sin sorpresa:
+\[
+r_H = 0.5 + 0.8 \times 0.2 = 0,48
+\]
+
+
+\section{Ejercicio 10}
+Tomando la covarianza como 0, me queda la siguiente funcion de varianza de portfolio teniendo en cuenta tambien la idiosincratica.
+\[
+\sigma^2_p = \sum_{i=1}^{N} w_i ( \beta_{1i}^2 \sigma_{F_1}^2 + \beta_{2i}^2 \sigma_{F_2}^2 )   
+\]
+
+
+\[
+\sigma^2_{\varepsilon_p} = \sum_{i=1}^{N} w_i^2 \sigma^2_{\varepsilon_i}
+\]
+
+c) Teniendo un set grande de datos y muy diversificado, la varianza idiosincratica, tiende a 0 y puede ser omitida, ya que el numero no impacta realmente al resultado del
+rendimiento del porfolio, siendo esta una variable independiente del activo. 
+
+\section{Ejercicio 11}
+Teniendo en cuenta la siguiente informacion, se calculara la beta del activo 1.
+
+\[
+\beta_2 = 1,2
+\]
+\[
+\sigma^2(r_m)= 0,3162
+\]
+\[
+\mathrm{Cov}(r_{1}, r_{2}) = 0,09
+\]
+
+
+\[
+\beta_1 = \frac{\mathrm{Cov}(r_1, r_2)}{\beta_2 \, \sigma^2(r_M)} = \frac{0.09}{1.2 \times 0.3162} \approx 0.237
+\]
+
+\section{Ejercicio 12}
+Dada la siguiente informacion, asumiendo que la varianza del factor M es 0,06:
+
+\[
+\begin{array}{lcccc}
+\hline
+\textbf{Activo} & w_i & \beta & \text{Retorno esperado} &  \sigma^2_r \\
+\hline
+\text{Blue Axe} & 0.25 & 0.50 & 0.40 & 7\% \\
+\text{Black Rock} & 0.25 & 0.50 & 0.25 & 5\% \\
+\text{Silver Light} & 0.50 & 1.00 & 0.21 & 7\% \\
+\hline
+\end{array}
+\]
+
+a) Para calcular la varianaz residual, utilizo la siguiente formula para cada activo:
+\[
+\sigma_i^2 = \beta_i^2 \sigma_m^2 + \sigma^2(\varepsilon_i)
+\]
+\[
+\sigma^2(\varepsilon_i) = \sigma_i^2 - \beta_i^2 \sigma_m^2  
+\]
+
+El resultado, es el siguiente:
+\[
+\begin{array}{lccccc}
+\hline
+\textbf{Activo} & w_i & \beta & \text{Retorno esperado} &  \sigma^2_r & \sigma^2(\varepsilon_i) \\
+\hline
+\text{Blue Axe} & 0.25 & 0.50 & 0.40 & 7\%  & 4\% \\
+\text{Black Rock} & 0.25 & 0.50 & 0.25 & 5\% & 2\% \\
+\text{Silver Light} & 0.50 & 1.00 & 0.21 & 7\%  &  1\% \\
+\hline
+\end{array}
+\]
+
+b) Se calcula el beta, el rendimiento esperado y la varianza del portfolio.
+\[
+\beta_p = \sum_{i=1}^{N} w_i \beta_i
+\]
+\[
+\beta_p = 0.25 \times 0,5 + 0.25 \times 0,5 + 0.5 \times 1 = 0,75
+\]
+\\
+
+\[
+\sigma_{r_P}^2 = (\sum_{j=1}^{n} w_j \beta_j)^2 \sigma_{r_M}^2 + \sum_{j=1}^{n} w_j^2 \sigma_{\varepsilon_j}^2
+\]
+\[
+\sigma_{r_P}^2 = 3,69\%
+\]
+
+\[
+E(r_P) = \sum_{i=1}^{N} w_i \, E(r_i) = 27\%
+\]
+
+c) Siguiendo el enfoque de Markowitz la varianza seria la siguiente, para completar la 
+tabla se tomaron las varianzas del primer punto:
+\[
+\begin{array}{lccc}
+ & \text{Blue Axe} & \text{Black Rock} & \text{Silver Light} \\
+\hline
+\text{Blue Axe} & \sigma_{\text{BA}}^2 & 0.020 & 0.035 \\
+\text{Black Rock} & 0.020 & \sigma_{\text{BR}}^2 & 0.035 \\
+\text{Silver Light} & 0.035 & 0.035 & \sigma_{\text{SL}}^2 \\
+\end{array}
+\]
+
+\[
+\sigma_P^2 = \sum_i \sum_j w_i w_j \mathrm{Cov}(r_i, r_j) = 0,045
+\]
+
+d)
+¿Qué conjeturas pueden argumentarse si se halla que la covarianza real difiere
+de los supuestos del LFM?
+Se puede tener como conjetura que el LFM modelado esta mal especificado teniendo factores 
+que estan correlacionados entre si. Tambien, puede ser posible que existan factores adicionales relevantes que no se consideran.
+
+\end{document}
