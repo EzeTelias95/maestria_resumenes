@@ -146,6 +146,12 @@ de un security-risk, esta dado por el riesgo premium del indice.
 \textbf{Risk and Covariance in the Single-Index Model}
 \\
 Derivamos los siguietnes elementos de la input list de optimizacion de porfolio de markowitz a los parametros del index model.
+\\
+
+\textbf{Es el index model inferior al modelo de full covariance?} En teoria, el index model deberia ser inferior
+al de markowitz, se imponen supuestos que pueden no ser precisos. Se destaca que si bien el modelo de markowitz permite mas flexibilidad tambien, la ventaja
+que tenemos puede ser ilusoria si no estimamos de manera precisa las covarianzas.
+
 
 \begin{flalign*}
 & \textbf{Total risk} = \textbf{Systematic risk} + \textbf{Firm-specific risk} & \\
@@ -158,10 +164,6 @@ Derivamos los siguietnes elementos de la input list de optimizacion de porfolio 
 & = \mathrm{Corr}(r_i, r_M) \times \mathrm{Corr}(r_j, r_M) &
 \end{flalign*}
 
-\section{Arbitrage Pricing Theory and Multifactor Models of Risk and Return - Capitulo 10}
-El model de factores descompone los retornos en sistematicos e idiosincraticos. Existe un problema de tomar
-al riesgo sistematico con un unico factor cuando no lo es. Se menciona el riesgo sistematico como la fuentes de
- la prima de riesgo. Existen otras fuentes de riesgo como tasas de interes, inflacion, etc. Entonces, otra representacion de 
- riesgo sistematico puede ser un buen refinamiento del model de unico factor y nos permite tener un mayor entendimiento de los retornos.
+
 
 \end{document}
